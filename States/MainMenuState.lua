@@ -1,17 +1,25 @@
+
 MainMenuState = Class{__includes = BaseState}
 
 -- whether we're highlighting "Start" or "High Scores"
 local highlighted = 1
 
+
+
 function MainMenuState:enter(params)
 end 
 
 function MainMenuState:init()
+  music1:setLooping(true)
+  music1:play()
+  music1:setVolume(0.9)
+
   
 end 
 
 function MainMenuState:update(dt)
   
+   
 
      -- toggle highlighted option if we press an arrow key up or down
      if love.keyboard.wasPressed('up')then
@@ -54,7 +62,8 @@ end
 
 
 function MainMenuState:render()
-    love.graphics.setFont(love.graphics.newFont(35))
+    love.graphics.setColor(0.6, 0.6, 0.6, 1)
+    love.graphics.setFont(love.graphics.newFont('font.ttf',37))
     --love.graphics.draw(self.image,0,0,0,1,1)
    
     --love.graphics.draw(self.vibo,500-360,-200-50-60,0,1.75,1.75)
@@ -70,7 +79,7 @@ function MainMenuState:render()
         VIRTUAL_WIDTH, 'center')
 
     -- reset the color
-    love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.setColor(0.6, 0.6, 0.6, 1)
 
     -- render option 2 blue if we're highlighting that one
     if highlighted == 2 then
@@ -79,7 +88,7 @@ function MainMenuState:render()
     love.graphics.printf("LEVELS", 0, VIRTUAL_HEIGHT / 2 + 150-50,
         VIRTUAL_WIDTH, 'center')
     
-        love.graphics.setColor(1, 1, 1, 1)
+        love.graphics.setColor(0.6, 0.6, 0.6, 1)
     if highlighted == 3 then
             love.graphics.setColor(103/255, 1, 1, 1)
     end
@@ -87,7 +96,7 @@ function MainMenuState:render()
             VIRTUAL_WIDTH, 'center')
 
     -- reset the color
-    love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.setColor(0.6, 0.6, 0.6, 1)
 
     if highlighted == 4 then
         love.graphics.setColor(103/255, 1, 1, 1)
@@ -97,5 +106,5 @@ function MainMenuState:render()
             VIRTUAL_WIDTH, 'center')
 
     -- reset the color
-    love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.setColor(0.6, 0.6, 0.6, 1)
 end 

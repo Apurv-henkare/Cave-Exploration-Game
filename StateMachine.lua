@@ -44,6 +44,7 @@ function StateMachine:init(states)
 	}
 	self.states = states or {} -- [name] -> [function that returns states]
 	self.current = self.empty
+	self.g=""
 end
 
 function StateMachine:change(stateName, enterParams)
@@ -53,6 +54,10 @@ function StateMachine:change(stateName, enterParams)
 	self.current = self.states[stateName]()
 	self.current:enter(enterParams,arg2)
 end
+
+function StateMachine:getStateMachine()
+	return self.g 
+end 
 
 function StateMachine:update(dt)
 	self.current:update(dt)
